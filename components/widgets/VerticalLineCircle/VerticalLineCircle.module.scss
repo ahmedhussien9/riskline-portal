@@ -1,0 +1,28 @@
+.numberCircle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--white);
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0.2rem;
+    position: relative;
+    transition: all 1s ease;
+}
+.numberCircle:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transition: height 4s;
+    -moz-transition: height 4s;
+    -ms-transition: height 4s;
+    -o-transition: height 4s;
+    transition: height 4s;
+    height: 50px;
+    width: 2px;
+    transition: all 1s ease;
+    background: var(--white);
+    transform: translate(-50%, 100%);
+}

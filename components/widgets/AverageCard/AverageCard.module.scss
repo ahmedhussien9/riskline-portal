@@ -1,0 +1,49 @@
+.levelAverageWrap {
+    display: flex;
+    height: calc(100% - 5rem);
+    justify-content: center;
+    width: 100%;
+
+    .numberWrap {
+        display: flex;
+        gap: 1rem;
+        flex: 1;
+        .value {
+            color: var(--white);
+            font-size: 7rem;
+            font-weight: lighter;
+            font-family: GT-LIGHT;
+            letter-spacing: -0.5rem;
+            opacity: 0.9;
+            margin-top: auto;
+            margin-bottom: 0px;
+            line-height: 6rem;
+            width: 100%;
+        }
+    }
+    .averageWrap {
+        display: flex;
+        font-size: 1rem;
+        height: 100%;
+        flex-direction: column;
+        flex: 1;
+        text-align: center;
+        .averageContainer {
+            margin-top: auto;
+        }
+        .text {
+            color: var(--white);
+            font-weight: lighter;
+            font-size: 0.8rem;
+            font-family: "GT-LIGHT";
+            opacity: 0.9;
+            margin: 0px;
+            padding: 0px;
+            &:nth-of-type(2) {
+                font-weight: bold;
+                padding-top: 0.5rem;
+                font-size: 2rem;
+            }
+        }
+    }
+}

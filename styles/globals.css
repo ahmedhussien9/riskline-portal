@@ -2,8 +2,54 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "GT-Regular", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  animation: 2s ease-out 0s 1 FadeIn;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: "GT-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/GT-America-Standard-Regular-Trial.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "GT-LIGHT";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/GT-America-Standard-Light-Trial.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "GT-ULTRA-LIGHT";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(/fonts/GT-America-Standard-Ultra-Light-Trial.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Mono-Light";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(/fonts/GT-Flexa-Mono-Light-Trial.woff2) format("woff2");
+}
+
+:root {
+  --white: #fff;
 }
 
 a {
