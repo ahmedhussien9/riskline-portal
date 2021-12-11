@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    align-items: center;
+    line-height: 0.45rem;
+}
+.progressLabel {
+    width: 35%;
+}
+
+.label {
+    font-family: "Mono-Light";
+    color: var(--white);
+    opacity: 0.9;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.progressDiv {
+    border-radius: 0.5rem;
+    position: relative;
+    width: 65%;
+}
+.line {
+    position: absolute;
+    width: 100%;
+    display: block;
+    height: 0;
+    border: 1px solid #f40e3f;
+    margin: 3px;
+    top: 2px;
+    z-index: -1;
+}
+
+.progress {
+    z-index: 9999;
+    background-color: #fff;
+    height: 10px;
+    border-radius: 1rem;
+    transition: 1s ease;
+    transition-delay: 0.5s;
+    max-width: 100%;
+
+    &:hover {
+        background: rgb(201, 199, 199);
+    }
+}

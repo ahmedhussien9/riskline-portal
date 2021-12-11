@@ -3,16 +3,88 @@ import HomeHeader from "../components/Home/HomeHeader";
 import LatestAlerts from "../components/Home/LatestAlerts/LatestAlerts";
 import RiskBreakDown from "../components/Home/RiskBreakDown/RiskBreakDown";
 import Trend from "../components/Home/Trend/Trend";
-import SearchInput from "../components/SearchInput";
 import { GetCountries } from "../services/countriesService";
 import styles from "../styles/Home.module.scss";
 import { useState, useEffect } from "react";
+import SearchBar from "../components/SearchInput";
+import { getAlertsApi } from "../services/alertService";
+import NextAndPrevBtn from "../components/widgets/NextAndPrevBtn/NextAndPrevBtn";
+
+const DEFAULT_ALERT_INDEX = 0;
+const DEFAULT_ALERT_COUNTRY = "germany";
 export default function Home() {
-  const [countries, setCountries] = useState([]);
+  const [queries, searchQueries] = useState([]);
+  const [currentAlert, setCurrentAlert] = useState({});
+  const [alertCounts, setAlertCount] = useState(null);
+  const [currentAlertIndex, setCurrentAlertIndex] = useState(0);
+  const [alerts, setAlerts] = useState([]);
+  const [lastAlertIndex, setLastAlertIndex] = useState(null);
+  const [cities, setCities] = useState([]);
+  const [disableNext, setDisableNext] = useState(false);
+  const [disablePrev, setDisablePrev] = useState(false);
+
   useEffect(async () => {
     const countiesData = await GetCountries();
-    setCountries(countiesData.countries);
+    searchQueries([...countiesData.countries, countiesData.cities]);
   }, []);
+
+  useEffect(async () => {
+    const fetchData = async () => {
+      try {
+        fetchAlerts(DEFAULT_ALERT_COUNTRY, currentAlertIndex);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const fetchAlerts = async (location, alertIndex = 0) => {
+    const feedAlertsData = await getAlertsApi(location);
+    if (
+      feedAlertsData &&
+      feedAlertsData.alerts &&
+      feedAlertsData.alerts.length > 0
+    ) {
+      setAlerts(feedAlertsData.alerts);
+      setCities(feedAlertsData.cities);
+      setLastAlertIndex(feedAlertsData.alerts.length);
+      setCurrentAlert(feedAlertsData.alerts[alertIndex] || null);
+      countAlertsTotalNumber(feedAlertsData.alerts);
+      setCurrentAlertIndex(alertIndex);
+    }
+  };
+
+  const countAlertsTotalNumber = (alerts) => {
+    let alertsNumber = [];
+    for (let index = 0; index < alerts.length; index++) {
+      alertsNumber.push(index);
+    }
+    setAlertCount(alertsNumber);
+  };
+
+  const onClickNext = () => {
+    let alertIndex = currentAlertIndex + 1;
+    if (alertIndex < lastAlertIndex) {
+      setCurrentAlertIndex(alertIndex);
+      setCurrentAlert(alerts[alertIndex]);
+    }
+  };
+
+  const onClickPrev = () => {
+    let alertIndex = currentAlertIndex - 1;
+    if (alertIndex > -1) {
+      setCurrentAlertIndex(alertIndex);
+      setCurrentAlert(alerts[alertIndex]);
+    }
+  };
+
+  const onChangeText = async (value, enterEvent) => {
+    if (value && enterEvent) {
+      fetchAlerts(value, DEFAULT_ALERT_INDEX);
+    }
+  };
+
   return (
     <div className={`${styles.homeContainer} `}>
       <Head>
@@ -23,17 +95,32 @@ export default function Home() {
       <main className={"container"}>
         <HomeHeader></HomeHeader>
         <div className={styles.grid}>
-          <div className={styles.searchInput}>
-            <SearchInput list={"countries"} data={countries}></SearchInput>
+          <div className={styles.searchInput} style={{ position: "relative" }}>
+            <SearchBar items={queries} onChangeText={onChangeText}></SearchBar>
           </div>
+
           <div className={styles.reports}>
-            <LatestAlerts></LatestAlerts>
+            <div className={styles.latestAlertsWrapper}>
+              <div className={styles.reportsHeader}>
+                <div className={styles.reportsHeaderTitleWrap}>
+                  <p>Latest Alerts</p>
+                </div>
+                <div>
+                  <NextAndPrevBtn
+                    onClickNext={onClickNext}
+                    onClickPrev={onClickPrev}
+                  ></NextAndPrevBtn>
+                </div>
+              </div>
+              <LatestAlerts alert={currentAlert}></LatestAlerts>
+            </div>
+
             <div className={styles.trendAndRiskContainer}>
               <div className={styles.trendContainer}>
                 <Trend></Trend>
               </div>
               <div className={styles.riskBreakDownContainer}>
-                <RiskBreakDown></RiskBreakDown>
+                <RiskBreakDown alert={currentAlert}></RiskBreakDown>
               </div>
             </div>
           </div>

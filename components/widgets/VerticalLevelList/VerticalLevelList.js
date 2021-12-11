@@ -5,7 +5,7 @@ function VerticalLevelList(props) {
   return (
     <div className={styles.list}>
       {list.map((item, i) => {
-        return <VerticalLevel background={item.color}></VerticalLevel>;
+        return <VerticalLevel background={item.color} key={i}></VerticalLevel>;
       })}
     </div>
   );

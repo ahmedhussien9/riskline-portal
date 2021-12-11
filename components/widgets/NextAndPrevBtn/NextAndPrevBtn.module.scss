@@ -1,0 +1,38 @@
+.buttonWrapper {
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
+    border: 1px solid transparent;
+    height: 100%;
+    border: 1px solid transparent;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0px;
+    border-style: none !important;
+}
+.button {
+    background: transparent;
+    box-shadow: none;
+    height: 35px;
+    border-style: none !important;
+    border-color: transparent !important;
+    border-image: none !important;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    font-size: 1rem;
+    &:nth-of-type(1) {
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+    }
+    &:nth-of-type(2) {
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+    }
+}
+
+.prev {
+}

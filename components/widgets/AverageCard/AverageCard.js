@@ -1,9 +1,10 @@
 import styles from "./AverageCard.module.scss";
-function AverageCard() {
+function AverageCard(props) {
+  const { riskLevel } = props;
   return (
     <div className={styles.levelAverageWrap}>
       <div className={styles.numberWrap}>
-        <p className={styles.value}>7</p>
+        <p className={styles.value}>{riskLevel}</p>
       </div>
       <div className={styles.averageWrap}>
         <div className={styles.averageContainer}>

@@ -6,6 +6,7 @@ import TitleBottomIcon from "../../widgets/TitleBottomIcon/TitleBottomIcon";
 import LeafSvg from "./../../../public/leaf.svg";
 import VerticalLevelList from "../../widgets/VerticalLevelList/VerticalLevelList";
 import AverageCard from "../../widgets/AverageCard/AverageCard";
+import { Fragment } from "react";
 const LEVELS = [
   {
     color: "#33825B",
@@ -33,51 +34,62 @@ const LEVELS = [
   },
 ];
 function LatestAlerts(props) {
+  const { alert } = props;
   return (
     <TransparentCardContainer isNotOverBackground={true}>
-      <div className={styles.countryInfoContainer}>
-        <CardHeaderTitleTimeImage></CardHeaderTitleTimeImage>
-        <Paragraph
-          p={"Warnings continue in Luzon due to Typhoon Bising – Update"}
-          color={"#fff"}
-          padding={"0.5rem 1rem 1rem 1rem"}
-          opactiy={"0.8"}
-          fontSize={"1.1rem"}
-        ></Paragraph>
-      </div>
+      {alert && alert.country ? (
+        <Fragment>
+          <div className={styles.countryInfoContainer}>
+            <CardHeaderTitleTimeImage
+              title={alert.country.name}
+              image={alert.country.flag}
+              time={alert.published_at}
+            ></CardHeaderTitleTimeImage>
+            <Paragraph
+              p={alert.title}
+              color={"#fff"}
+              padding={"0.5rem 1rem 3rem 1rem"}
+              opactiy={"0.8"}
+              fontSize={"1.1rem"}
+            ></Paragraph>
+          </div>
 
-      <div className={styles.countryStatistics}>
-        <div className={styles.alertsWrapper}>
-          <div className={styles.alertCategory}>
-            <TitleBottomIcon
-              title={"Alert Category"}
-              subTitle={"NATURAL"}
-              padding={"1.5rem 0rem 1rem 0rem"}
-              borderRight={true}
-            >
-              <LeafSvg width={30} height={30} fill={"#fff"} />
-            </TitleBottomIcon>
+          <div className={styles.countryStatistics}>
+            <div className={styles.alertsWrapper}>
+              <div className={styles.alertCategory}>
+                <TitleBottomIcon
+                  title={"Alert Category"}
+                  subTitle={alert.category}
+                  padding={"1.5rem 0rem 1.5em 0rem"}
+                  borderRight={true}
+                >
+                  <LeafSvg width={30} height={30} fill={"#fff"} />
+                </TitleBottomIcon>
+              </div>
+              <div className={styles.alertLevels}>
+                <TitleBottomIcon
+                  title={"Alert Level"}
+                  subTitle={"Medium"}
+                  padding={"1.5rem 0rem 1rem 0rem"}
+                  borderRight={true}
+                >
+                  <VerticalLevelList list={LEVELS}></VerticalLevelList>
+                </TitleBottomIcon>
+              </div>
+            </div>
+            <div className={styles.riskLevelWrapper}>
+              <TitleBottomIcon
+                title={"Country Risk Level"}
+                subTitle={"HIGH RISK"}
+                borderRight={true}
+              ></TitleBottomIcon>
+              <AverageCard riskLevel={alert.risk_level}></AverageCard>
+            </div>
           </div>
-          <div className={styles.alertLevels}>
-            <TitleBottomIcon
-              title={"Alert Level"}
-              subTitle={"Medium"}
-              padding={"1.5rem 0rem 1rem 0rem"}
-              borderRight={true}
-            >
-              <VerticalLevelList list={LEVELS}></VerticalLevelList>
-            </TitleBottomIcon>
-          </div>
-        </div>
-        <div className={styles.riskLevelWrapper}>
-          <TitleBottomIcon
-            title={"Country Risk Level"}
-            subTitle={"HIGH RISK"}
-            borderRight={true}
-          ></TitleBottomIcon>
-          <AverageCard></AverageCard>
-        </div>
-      </div>
+        </Fragment>
+      ) : (
+        ""
+      )}
     </TransparentCardContainer>
   );
 }

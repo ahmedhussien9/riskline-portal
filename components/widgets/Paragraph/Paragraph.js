@@ -21,7 +21,7 @@ function Paragraph(props) {
         opacity: opacity,
       }}
     >
-      {text}
+      {p}
     </p>
   );
 }

@@ -1,12 +1,11 @@
 .homeContainer {
-  // background-image: linear-gradient(to top, rgba(3, 3, 7, 0.747) 0%, rgb(0, 0, 0) 85%), url(/home-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: left;
   max-width: 100%;
   height: 100vh;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   -o-transition: all 300ms;
@@ -22,15 +21,30 @@
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   -o-transition: all 300ms;
-  gap: 2rem;
+  gap: 3.5rem;
+  margin-top: 3.5rem;
 }
 
 .reports {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  .latestAlertsContainer {
-    // height: 30rem;
+
+  .latestAlertsWrapper {
+    position: relative;
+    .reportsHeader {
+      position: absolute;
+      top: -45px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .reportsHeaderTitleWrap p {
+        color: #fff;
+        font-family: "Mono-Light";
+        font-size: 14px;
+      }
+    }
   }
   .trendAndRiskContainer {
     .trendContainer {
@@ -43,16 +57,15 @@
 }
 @media screen and (min-width: 1000px) {
   .grid {
-    grid-template-columns: 1fr 50%;
+    grid-template-columns: 1fr 55%;
     gap: 8rem;
   }
 }
 @media screen and (min-width: 1400px) {
   .homeContainer {
-    // background-image: linear-gradient(to top, rgba(3, 3, 7, 0.082) 0%, rgb(0, 0, 0) 85%),
   }
 
   .reports {
-    grid-template-columns: 359px 235px;
+    grid-template-columns: 400px 310px;
   }
 }
