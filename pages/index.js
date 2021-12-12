@@ -21,7 +21,7 @@ export default function Home() {
   const [lastAlertIndex, setLastAlertIndex] = useState(null);
   const [cities, setCities] = useState([]);
   const [disableNext, setDisableNext] = useState(false);
-  const [disablePrev, setDisablePrev] = useState(false);
+  const [disablePrev, setDisablePrev] = useState(true);
 
   useEffect(async () => {
     const countiesData = await GetCountries();
@@ -65,23 +65,35 @@ export default function Home() {
 
   const onClickNext = () => {
     let alertIndex = currentAlertIndex + 1;
+
+    if (alertIndex === lastAlertIndex) {
+      setDisableNext(true);
+    }
+
     if (alertIndex < lastAlertIndex) {
       setCurrentAlertIndex(alertIndex);
       setCurrentAlert(alerts[alertIndex]);
+      setDisablePrev(false);
     }
   };
 
   const onClickPrev = () => {
     let alertIndex = currentAlertIndex - 1;
+    if (alertIndex === 0) {
+      setDisablePrev(true);
+    }
     if (alertIndex > -1) {
       setCurrentAlertIndex(alertIndex);
       setCurrentAlert(alerts[alertIndex]);
+      setDisableNext(false);
     }
   };
 
   const onChangeText = async (value, enterEvent) => {
     if (value && enterEvent) {
       fetchAlerts(value, DEFAULT_ALERT_INDEX);
+      setDisablePrev(true);
+      setDisableNext(false);
     }
   };
 
@@ -98,17 +110,18 @@ export default function Home() {
           <div className={styles.searchInput} style={{ position: "relative" }}>
             <SearchBar items={queries} onChangeText={onChangeText}></SearchBar>
           </div>
-
           <div className={styles.reports}>
             <div className={styles.latestAlertsWrapper}>
               <div className={styles.reportsHeader}>
                 <div className={styles.reportsHeaderTitleWrap}>
                   <p>Latest Alerts</p>
                 </div>
-                <div>
+                <div className={styles.prevNextWrapper}>
                   <NextAndPrevBtn
+                    disablePrev={disablePrev}
                     onClickNext={onClickNext}
                     onClickPrev={onClickPrev}
+                    disableNext={disableNext}
                   ></NextAndPrevBtn>
                 </div>
               </div>
@@ -117,7 +130,7 @@ export default function Home() {
 
             <div className={styles.trendAndRiskContainer}>
               <div className={styles.trendContainer}>
-                <Trend></Trend>
+                <Trend alert={currentAlert}></Trend>
               </div>
               <div className={styles.riskBreakDownContainer}>
                 <RiskBreakDown alert={currentAlert}></RiskBreakDown>

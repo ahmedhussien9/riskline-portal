@@ -17,20 +17,21 @@
     text-transform: uppercase;
     font-size: 12px;
 }
-.progressDiv {
-    border-radius: 0.5rem;
-    position: relative;
-    width: 65%;
-}
 .line {
     position: absolute;
     width: 100%;
     display: block;
     height: 0;
-    border: 1px solid #f40e3f;
+    border-bottom: 2px solid #f40e3f;
     margin: 3px;
     top: 2px;
     z-index: -1;
+}
+
+.progressDiv {
+    border-radius: 0.5rem;
+    position: relative;
+    width: 65%;
 }
 
 .progress {

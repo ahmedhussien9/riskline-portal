@@ -1,0 +1,43 @@
+.trendWrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.trendHeader {
+    padding: 0.8rem 1rem;
+    height: 50%;
+}
+.headerTitle {
+    font-family: "Mono-Light";
+    color: var(--white);
+    opacity: 0.9;
+    font-weight: normal;
+    margin: 0rem;
+    font-size: 0.9rem;
+    &:nth-of-type(2) {
+        font-size: 1rem;
+    }
+}
+
+.line {
+    position: absolute;
+    width: 100%;
+    display: block;
+    border-bottom: 2px solid #f40e3f;
+    z-index: 999;
+    -webkit-transition: 1s ease;
+    transition: 1s ease;
+    -webkit-transition-delay: 0.5s;
+    transition-delay: 0.5s;
+}
+
+.trendMonthWrap {
+    position: relative;
+    max-height: auto;
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    padding: 0.5rem;
+}

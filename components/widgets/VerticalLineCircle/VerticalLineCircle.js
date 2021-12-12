@@ -1,10 +1,26 @@
 import styles from "./VerticalLineCircle.module.scss";
-function VerticalLineCircle(props) {
-  const height = { props };
-  const hg = height * 10;
+import React, { useEffect, useState } from "react";
+export const VerticalLineCircle = ({ height, percent }) => {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    setValue(percent * height);
+  }, [percent, height]);
   return (
-    <div className={styles.numberCircle} style={{ height: hg + "%" }}></div>
+    <div className={styles.progressDiv}>
+      <div
+        // data-for="main"
+        // data-tip="hello world"
+        // data-iscapture="true"
+        className={styles.numberCircle}
+      ></div>
+      <div style={{ height: `${value}px` }} className={styles.progress}></div>
+      {/* <ReactTooltip
+        id="main"
+        place={"right"}
+        type={"light"}
+        effect={"solid"}
+        multiline={true}
+      /> */}
+    </div>
   );
-}
-
-export default VerticalLineCircle;
+};

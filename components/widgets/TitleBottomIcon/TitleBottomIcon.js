@@ -10,7 +10,7 @@ function TitleBottomIcon(props) {
     borderLeft,
     borderTop,
     borderRight,
-    height
+    height,
   } = props;
 
   return (

@@ -78,11 +78,7 @@ function LatestAlerts(props) {
               </div>
             </div>
             <div className={styles.riskLevelWrapper}>
-              <TitleBottomIcon
-                title={"Country Risk Level"}
-                subTitle={"HIGH RISK"}
-                borderRight={true}
-              ></TitleBottomIcon>
+    
               <AverageCard riskLevel={alert.risk_level}></AverageCard>
             </div>
           </div>

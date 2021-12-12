@@ -1,16 +1,22 @@
 .homeContainer {
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: left;
   max-width: 100%;
-  height: 100vh;
+  height: 105vh;
   padding: 2rem 1rem;
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   -o-transition: all 300ms;
+  background-attachment: fixed;
   box-shadow: inset 0px 20px 3500px 280px rgba(0, 0, 0, 0.6);
   background-image: url(/home-bg.png);
+}
+
+.prevNextWrapper {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
 }
 
 .grid {
@@ -29,7 +35,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-
   .latestAlertsWrapper {
     position: relative;
     .reportsHeader {
@@ -62,6 +67,9 @@
   }
 }
 @media screen and (min-width: 1400px) {
+  .reports {
+    grid-auto-flow: column;
+  }
   .homeContainer {
   }
 
