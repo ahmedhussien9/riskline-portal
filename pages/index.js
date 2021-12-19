@@ -11,10 +11,11 @@ import { getAlertsApi } from "../services/alertService";
 import NextAndPrevBtn from "../components/widgets/NextAndPrevBtn/NextAndPrevBtn";
 
 const DEFAULT_ALERT_INDEX = 0;
-const DEFAULT_ALERT_COUNTRY = "germany";
+const DEFAULT_ALERT_COUNTRY = "canada";
 export default function Home() {
   const [queries, searchQueries] = useState([]);
   const [currentAlert, setCurrentAlert] = useState({});
+  const [currentCity, setCurrentCity] = useState({});
   const [alertCounts, setAlertCount] = useState(null);
   const [currentAlertIndex, setCurrentAlertIndex] = useState(0);
   const [alerts, setAlerts] = useState([]);
@@ -48,6 +49,7 @@ export default function Home() {
     ) {
       setAlerts(feedAlertsData.alerts);
       setCities(feedAlertsData.cities);
+      setCurrentCity(feedAlertsData.city);
       setLastAlertIndex(feedAlertsData.alerts.length);
       setCurrentAlert(feedAlertsData.alerts[alertIndex] || null);
       countAlertsTotalNumber(feedAlertsData.alerts);
@@ -125,7 +127,10 @@ export default function Home() {
                   ></NextAndPrevBtn>
                 </div>
               </div>
-              <LatestAlerts alert={currentAlert}></LatestAlerts>
+              <LatestAlerts
+                city={currentCity}
+                alert={currentAlert}
+              ></LatestAlerts>
             </div>
 
             <div className={styles.trendAndRiskContainer}>

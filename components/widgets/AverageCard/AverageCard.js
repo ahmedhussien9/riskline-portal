@@ -2,12 +2,20 @@ import styles from "./AverageCard.module.scss";
 import TitleBottomIcon from "../../widgets/TitleBottomIcon/TitleBottomIcon";
 
 function AverageCard(props) {
-  const { riskLevel } = props;
+  const { riskLevel, city } = props;
+
+  const renderRiskLevelArea = () => {
+    if (city && city.name) {
+      return "City";
+    } else {
+      return "Country";
+    }
+  };
   return (
     <div className={styles.levelAverageWrap}>
       <div className={styles.levelAverageHeaderWrap}>
         <TitleBottomIcon
-          title={"Country Risk Level"}
+          title={`${renderRiskLevelArea()} Risk Level`}
           subTitle={"HIGH RISK"}
           borderRight={true}
         ></TitleBottomIcon>

@@ -11,7 +11,7 @@ export const ProgressBar = ({ width, percent, label }) => {
         <h5 className={styles.label}>{label.substring(0, 11 - 3)}</h5>
       </div>
       <div className={styles.progressDiv}>
-        <div style={{ width: `${value}px` }} className={styles.progress}></div>
+        <div style={{ width: `${value}%` }} className={styles.progress}></div>
         <div className={styles.line} />
       </div>
     </div>

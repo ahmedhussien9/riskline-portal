@@ -1,17 +1,9 @@
 import styles from "./VerticalLevel.module.scss";
 function VerticalLevel(props) {
-  const { background } = props;
-  
+  const { isActive } = props;
+
   return (
-    <div
-      className={styles.item}
-      style={{
-        background: background,
-        position: "relative",
-        width: "0.6rem",
-        height: "2rem",
-      }}
-    ></div>
+    <div className={`${styles.item} ${isActive ? styles.active : ""}`}></div>
   );
 }
 

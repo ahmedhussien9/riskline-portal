@@ -7,40 +7,16 @@ import LeafSvg from "./../../../public/leaf.svg";
 import VerticalLevelList from "../../widgets/VerticalLevelList/VerticalLevelList";
 import AverageCard from "../../widgets/AverageCard/AverageCard";
 import { Fragment } from "react";
-const LEVELS = [
-  {
-    color: "#33825B",
-  },
-  {
-    color: "#33825B",
-  },
-  {
-    color: "#44AE72",
-  },
-  {
-    color: "#44AE72",
-  },
-  {
-    color: "#FAC84A",
-  },
-  {
-    color: "#FAC84A",
-  },
-  {
-    color: "",
-  },
-  {
-    color: "",
-  },
-];
+
 function LatestAlerts(props) {
-  const { alert } = props;
+  const { alert, city } = props;
   return (
     <TransparentCardContainer isNotOverBackground={true}>
       {alert && alert.country ? (
         <Fragment>
           <div className={styles.countryInfoContainer}>
             <CardHeaderTitleTimeImage
+              city={city}
               title={alert.country.name}
               image={alert.country.flag}
               time={alert.published_at}
@@ -48,8 +24,9 @@ function LatestAlerts(props) {
             <Paragraph
               p={alert.title}
               color={"#fff"}
-              padding={"0.5rem 1rem 3rem 1rem"}
+              padding={"0.5rem 1rem 2rem 1rem"}
               opactiy={"0.8"}
+              height={"100px"}
               fontSize={"1.1rem"}
             ></Paragraph>
           </div>
@@ -73,13 +50,17 @@ function LatestAlerts(props) {
                   padding={"1.5rem 0rem 1rem 0rem"}
                   borderRight={true}
                 >
-                  <VerticalLevelList list={LEVELS}></VerticalLevelList>
+                  <VerticalLevelList
+                    riskLevel={alert.risk_level}
+                  ></VerticalLevelList>
                 </TitleBottomIcon>
               </div>
             </div>
             <div className={styles.riskLevelWrapper}>
-    
-              <AverageCard riskLevel={alert.risk_level}></AverageCard>
+              <AverageCard
+                riskLevel={alert.risk_level}
+                city={city}
+              ></AverageCard>
             </div>
           </div>
         </Fragment>

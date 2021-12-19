@@ -2,7 +2,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 100%;
-  height: 105vh;
   padding: 2rem 1rem;
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -53,7 +52,7 @@
   }
   .trendAndRiskContainer {
     .trendContainer {
-      height: 45%;
+      height: 47.5%;
     }
     .riskBreakDownContainer {
       margin-top: 1.5rem;
@@ -71,6 +70,7 @@
     grid-auto-flow: column;
   }
   .homeContainer {
+    height: 105vh;
   }
 
   .reports {

@@ -24,66 +24,62 @@ function Trend(props) {
           <div className={styles.trendMonthWrap}>
             <div
               className={styles.line}
-              style={{
-                bottom: `${calculateLineTop(
-                  alert.country.risk_level_history
-                )}%`,
-              }}
+              // style={{
+              //   bottom: `${calculateLineTop(
+              //     alert.country.risk_level_history
+              //   )}%`,
+              // }}
             ></div>
             <VerticalLineCircle
-              data-tip="hello world"
               height={alert.country.risk_level_history.January}
-              percent={10}
+              percent={20}
             >
               <ReactTooltip />
             </VerticalLineCircle>
-            <VerticalLineCircle
-              height={alert.country.risk_level_history.February}
-              percent={10}
-            ></VerticalLineCircle>
+            <VerticalLineCircle height={5} percent={20}></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.March}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.April}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.May}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.June}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.July}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.August}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.August}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.September}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.October}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.November}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
             <VerticalLineCircle
               height={alert.country.risk_level_history.December}
-              percent={10}
+              percent={20}
             ></VerticalLineCircle>
           </div>
         </div>

@@ -2,8 +2,17 @@ import styles from "./Paragraph.module.scss";
 import { useTextTruncate } from "../../../Hooks/Truncate";
 
 function Paragraph(props) {
-  const { length, ending, p, color, padding, opacity, fontSize, fontFamily } =
-    props;
+  const {
+    length,
+    ending,
+    p,
+    height,
+    color,
+    padding,
+    opacity,
+    fontSize,
+    fontFamily,
+  } = props;
   let options = {
     length: length,
     ending: ending,
@@ -19,6 +28,7 @@ function Paragraph(props) {
         fontSize: fontSize,
         fontFamily: fontFamily,
         opacity: opacity,
+        height,
       }}
     >
       {p}

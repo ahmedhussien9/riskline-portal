@@ -1,11 +1,19 @@
 import VerticalLevel from "../VerticalLevel/VerticalLevel";
 import styles from "./VerticalLevel.module.scss";
 function VerticalLevelList(props) {
-  const { list } = props;
+  const { riskLevel } = props;
+  if (!riskLevel) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className={styles.list}>
-      {list.map((item, i) => {
-        return <VerticalLevel background={item.color} key={i}></VerticalLevel>;
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => {
+        return (
+          <VerticalLevel
+            key={i}
+            isActive={i < riskLevel * 2 ? true : false}
+          ></VerticalLevel>
+        );
       })}
     </div>
   );

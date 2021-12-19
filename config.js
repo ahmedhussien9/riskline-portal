@@ -1,4 +1,4 @@
 export const Config = {
-  baseUrl: "http://195.201.29.59:8095/",
+  baseUrl: "https://api.v2-staging.riskline.com/",
 
 };

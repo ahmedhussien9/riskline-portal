@@ -5,22 +5,14 @@ export const VerticalLineCircle = ({ height, percent }) => {
   useEffect(() => {
     setValue(percent * height);
   }, [percent, height]);
+
   return (
     <div className={styles.progressDiv}>
+      <div className={styles.numberCircle}></div>
       <div
-        // data-for="main"
-        // data-tip="hello world"
-        // data-iscapture="true"
-        className={styles.numberCircle}
+        style={{ height: `${value + 30}px` }}
+        className={styles.progress}
       ></div>
-      <div style={{ height: `${value}px` }} className={styles.progress}></div>
-      {/* <ReactTooltip
-        id="main"
-        place={"right"}
-        type={"light"}
-        effect={"solid"}
-        multiline={true}
-      /> */}
     </div>
   );
 };

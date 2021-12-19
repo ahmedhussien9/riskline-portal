@@ -11,6 +11,14 @@
             font-family: "GT-ULTRA-LIGHT";
             margin: 0px;
             padding: 0px;
+            .subTitle {
+                font-size: 14px;
+                background: #f1f1f1;
+                font-weight: bold;
+                color: #000;
+                border-radius: 3px;
+                padding: 0.2rem 0.3rem;
+            }
         }
         .time {
             opacity: 0.6;

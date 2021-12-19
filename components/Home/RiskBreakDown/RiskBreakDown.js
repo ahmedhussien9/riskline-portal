@@ -3,7 +3,9 @@ import TransparentCardContainer from "../../ui/TransparentCardContainer/Transpar
 import { ProgressBar } from "../../widgets/ProgressLine/ProgressLine";
 function RiskBreakDown(props) {
   const { alert } = props;
-
+  const redLineWidthInPixel = 100; // 100%;
+  const maxRiskLevelNum = 5;
+  const width = redLineWidthInPixel / maxRiskLevelNum;
   return (
     <TransparentCardContainer>
       {alert && alert.country ? (
@@ -13,7 +15,7 @@ function RiskBreakDown(props) {
             alert.country.sections.map((section, i) => {
               return (
                 <ProgressBar
-                  width={10}
+                  width={width}
                   percent={section.risk_level}
                   key={i}
                   label={section.name}
